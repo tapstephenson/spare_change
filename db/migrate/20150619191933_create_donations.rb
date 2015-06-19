@@ -3,7 +3,7 @@ class CreateDonations < ActiveRecord::Migration
     create_table :donations do |t|
       t.references :user
       t.references :charity
-      t.decimal :amount precision: 10, scale: 2
+      t.decimal :amount, precision: 10, scale: 2
       t.datetime :datetime
       t.boolean :pending
 

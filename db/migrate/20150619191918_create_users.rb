@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password_hash
       t.string :account_type
       t.integer :pin
+      t.string :uid
       t.references :charity
 
       t.timestamps null: false

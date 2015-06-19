@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
+  
   def index
   end
+
   def create
 
     user = User.where(uid: auth_hash.uid).first_or_create!(name: auth_hash.info.name, email: auth_hash.info.email)

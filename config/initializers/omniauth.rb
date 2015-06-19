@@ -1,5 +1,5 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :paypal, ENV['APP_ID'], ENV['APP_TOKEN'], sandbox: true, scope: "openid profile email"
+  provider :paypal, ENV['CLIENT_ID'], ENV['SECRET'], sandbox: true, scope: "openid profile email"
 end
 
 # Code below is for testing mode in case live authentication is lagging during testing.

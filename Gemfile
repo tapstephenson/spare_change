@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
+# Use paypal sdk to process payments
+gem 'paypal-sdk-rest'
 # Use env to hide variables
-
 gem 'dotenv-rails'
 # Use omniauth-paypal for user login
 gem "omniauth-paypal"

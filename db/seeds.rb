@@ -6,7 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(name: 'Tapley Stephenson', email: 'tap@gmail.com', username: 'plaid_test', password_hash: '', charity_id: '', _item: '')
+User.create(name: 'Tapley Stephenson', 
+            email: 'tap@gmail.com', 
+            username: 'plaid_test', 
+            password_hash: '', 
+            charity_id: '',
+            role: 1)
 
 # Lines 11 & 12 are for devise/pundit
 user = CreateAdminService.new.call

@@ -240,3 +240,32 @@ DEPRECATION WARNING: You attempted to assign a value which is not explicitly `tr
   [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
   [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
   [1m[36mTransaction Load (0.5ms)[0m  [1mSELECT "transactions".* FROM "transactions" WHERE "transactions"."user_id" = ?[0m  [["user_id", 1]]
+
+
+Started GET "/rails/info/db" for ::1 at 2015-06-20 10:25:22 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RailsDbInfo::TablesController#index as HTML
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/rails_db_info-0.2.0/app/views/rails_db_info/tables/index.html.erb within layouts/rails_db_info/application (3.2ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/rails_db_info-0.2.0/app/views/rails_db_info/tables/_header.html.erb (0.8ms)
+Completed 200 OK in 400ms (Views: 372.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/rails_db_info/application.self-e7a9284f6dd37f15fa9edcb2ab0a3930bb3d3706c24cd710bbb14528d3ac5c01.css?body=1" for ::1 at 2015-06-20 10:25:23 -0700
+
+
+Started GET "/rails/info/db/tables/transactions/entries" for ::1 at 2015-06-20 10:25:30 -0700
+Processing by RailsDbInfo::TablesController#entries as HTML
+  Parameters: {"table_id"=>"transactions"}
+  [1m[35m (10.7ms)[0m  SELECT * FROM transactions LIMIT 10 OFFSET 0
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM transactions[0m
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/rails_db_info-0.2.0/app/views/rails_db_info/tables/entries.html.erb within layouts/rails_db_info/application (52.8ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/rails_db_info-0.2.0/app/views/rails_db_info/tables/_header.html.erb (0.6ms)
+Completed 200 OK in 108ms (Views: 51.0ms | ActiveRecord: 12.5ms)
+
+
+Started GET "/rails/info/db/tables/charges" for ::1 at 2015-06-20 10:25:37 -0700
+Processing by RailsDbInfo::TablesController#show as HTML
+  Parameters: {"id"=>"charges"}
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/rails_db_info-0.2.0/app/views/rails_db_info/tables/show.html.erb within layouts/rails_db_info/application (2.2ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/rails_db_info-0.2.0/app/views/rails_db_info/tables/_header.html.erb (0.7ms)
+Completed 200 OK in 22ms (Views: 21.2ms | ActiveRecord: 0.2ms)

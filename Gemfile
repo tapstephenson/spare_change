@@ -26,7 +26,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
+# Use these gems for user auth
+gem 'bootstrap-sass'
+gem 'devise'
+gem 'pundit'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -45,11 +48,29 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'rspec-rails'
+  gem 'sqlite3'
 end
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'rails_db_info'
+  gem 'quiet_assets'
+  gem 'rails_layout'
+  gem 'spring-commands-rspec'
 end
 
+# the following are for devise/pundit
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
+end

@@ -59,8 +59,6 @@ ActiveRecord::Schema.define(version: 20150619191943) do
     t.string   "username"
     t.string   "password_hash"
     t.string   "account_type"
-    t.integer  "pin"
-    t.string   "uid"
     t.integer  "charity_id"
     t.string   "plaid_access_token"
     t.string   "email",                  default: "", null: false

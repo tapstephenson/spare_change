@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
+
+# make JSON requests to APIs
+gem 'httparty'
 # Use paypal sdk to process payments
 gem 'paypal-sdk-rest'
 # Use env to hide variables

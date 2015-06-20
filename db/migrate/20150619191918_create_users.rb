@@ -5,9 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :role
 
       t.string :username
-      t.string :password_hash #I don't think we need this. devise uses encrypted_password above.
       t.string :account_type
-      t.integer :pin
       t.string :uid # uid is for paypal - delete if we don't use paypal
       t.references :charity
       

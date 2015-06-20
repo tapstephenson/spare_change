@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'httparty'
+
+gem 'dotenv-rails'
+
 # Use omniauth-paypal for user login
 gem "omniauth-paypal"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -1,9 +1,11 @@
 source 'https://rubygems.org'
 
+# make JSON requests to APIs
 gem 'httparty'
-
+# Use paypal sdk to process payments
+gem 'paypal-sdk-rest'
+# Use env to hide variables
 gem 'dotenv-rails'
-
 # Use omniauth-paypal for user login
 gem "omniauth-paypal"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

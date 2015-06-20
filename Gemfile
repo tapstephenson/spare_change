@@ -1,15 +1,14 @@
 source 'https://rubygems.org'
-
 # make JSON requests to APIs
 gem 'httparty'
 # Use paypal sdk to process payments
 gem 'paypal-sdk-rest'
 # Use env to hide variables
-gem 'dotenv-rails'
+gem 'dotenv-rails', :groups => [:development, :test]
 # Use omniauth-paypal for user login
 gem "omniauth-paypal"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets

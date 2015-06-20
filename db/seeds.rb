@@ -6,6 +6,20 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.create(
+              name: 'Tapley Stephenson',
+              email: 'tap@gmail.com',
+              username: 'plaid_test',
+              password_hash: '',
+              account_type: 'wells',
+              charity_id: '1',
+              role: 1
+            )
+
+# user and created admin user are for devise/pundit
+user = CreateAdminService.new.call
+puts 'CREATED ADMIN USER: ' << user.email
+
 @user_account_info = HTTParty.post("https://tartan.plaid.com/connect?client_id=#{ENV['PLAID_CLIENT_ID']}&secret=#{ENV['PLAID_SECRET']}",
     body: {
       username: "plaid_test",
@@ -15,17 +29,6 @@
 )
 
 # p @user_account_info
-
-
-
-User.create(
-              name: 'Tapley Stephenson',
-              email: 'tap@gmail.com',
-              username: 'plaid_test',
-              password_hash: '',
-              account_type: 'wells',
-              charity_id: '1'
-            )
 
 # Charity.create(name: '', paypal_id: '', description: '')
 
@@ -43,13 +46,3 @@ User.create(
                       pending:["pending"]
                     )
 end
-
-
-
-
-
-
-
-
-
-

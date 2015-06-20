@@ -7,3 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create(name: 'Tapley Stephenson', email: 'tap@gmail.com', username: 'plaid_test', password_hash: '', charity_id: '', _item: '')
+
+# Lines 11 & 12 are for devise/pundit
+user = CreateAdminService.new.call
+puts 'CREATED ADMIN USER: ' << user.email

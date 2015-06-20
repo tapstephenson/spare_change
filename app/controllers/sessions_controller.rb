@@ -1,3 +1,4 @@
+# this is for paypal omniauth. remove if we don't do omni-auth
 class SessionsController < ApplicationController
   
   def index

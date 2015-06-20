@@ -4,16 +4,19 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.integer :role
 
-      ## Database authenticatable
-      t.string :email,              :null => false, :default => ""
-      t.string :encrypted_password, :null => false, :default => ""
-      
       t.string :username
       t.string :password_hash #I don't think we need this. devise uses encrypted_password above.
       t.string :account_type
       t.integer :pin
       t.string :uid # uid is for paypal - delete if we don't use paypal
       t.references :charity
+      
+      ## Plaid
+      t.string :plaid_access_token
+      
+      ## Database authenticatable
+      t.string :email,              :null => false, :default => ""
+      t.string :encrypted_password, :null => false, :default => ""
 
       ## Recoverable
       t.string   :reset_password_token

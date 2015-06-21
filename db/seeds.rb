@@ -7,6 +7,11 @@ user.charity_id = 1,
 user.role = 2,
 user.save!
 
+Bank.create(bank_name: 'American Express', account_type: 'amex')
+Bank.create(bank_name: 'Charles Schwab', account_type: 'scwab')
+Bank.create(bank_name: 'Fidelity', account_type: 'fidelity')
+Bank.create(bank_name: 'Wells Fargo', account_type: 'wells')
+
 # process for retrieving Plaid access token (will be used in signup)
 plaid_new_user_data = HTTParty.post("https://tartan.plaid.com/auth",
   body:{

@@ -9,7 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       # t.string :uid
 
       ## Plaid
-      t.string :account_type
+      t.references :bank
       t.string :plaid_access_token
 
       ## Database authenticatable

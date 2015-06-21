@@ -6,6 +6,17 @@ enum role: [:user, :vip, :admin]
     self.role ||= :user
   end
 
+
+  def plaid_username
+    # needed for form_for
+    # leave blank, we don't want to store bank info
+  end
+
+  def plaid_password
+    # needed for form_for
+      # leave blank, we don't want to store bank info
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

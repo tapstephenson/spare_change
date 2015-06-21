@@ -1,5 +1,5 @@
 <div class="authform" id="SignUp">
-  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form', :id => "spareChangeRegistration"}, remote: true) do |f| %>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f| %>
     <h3>Sign up</h3>
     <%= devise_error_messages! %>
     <div class="form-group">

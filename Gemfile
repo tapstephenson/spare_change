@@ -1,15 +1,14 @@
 source 'https://rubygems.org'
-
 # make JSON requests to APIs
 gem 'httparty'
 # Use paypal sdk to process payments
 gem 'paypal-sdk-rest'
 # Use env to hide variables
-gem 'dotenv-rails'
+gem 'dotenv-rails', :groups => [:development, :test]
 # Use omniauth-paypal for user login
 gem "omniauth-paypal"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -21,6 +20,9 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# allow use of handlebars in rails views
+gem 'handlebars_assets'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -29,7 +31,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
+# Use these gems for user auth
+gem 'bootstrap-sass'
+gem 'devise'
+gem 'pundit'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -48,11 +53,28 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'rspec-rails'
 end
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'rails_db_info'
+  gem 'quiet_assets'
+  gem 'rails_layout'
+  gem 'spring-commands-rspec'
 end
 
+# the following are for devise/pundit
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
+end

@@ -1,0 +1,21 @@
+<div class='authform'>
+  <form action="/stripe/create"  method="post">
+      <div class="form-group">
+        <label>Card number</label>
+        <input class="form-control" type="text" name="card[number]">
+      </div>
+      <div class="form-group">
+        <label>Exp. month</label>
+        <input class="form-control" type="number" name="card[exp_month]" min="1" max="12">
+      </div>
+      <div class="form-group">
+        <label>Exp. year</label>
+        <input class="form-control" type="number" name="card[exp_year]" min="<%= @current_year %>" max="<%= @current_year + 30 %>">
+      </div>
+      <div class="form-group">
+        <label>CVC</label>
+        <input class="form-control" type="text" name="card[exp_month]">
+      </div>
+      <input type="submit" value="Sign up" class="button right">
+  </form>
+</div>

@@ -1,7 +1,5 @@
 class PlaidController < ApplicationController
 
-
-
   def new
     # this is the user id from sessions
     id = session["warden.user.user.key"][0][0]

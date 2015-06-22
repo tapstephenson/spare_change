@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   get 'plaid/update' => 'plaid#edit'
   post 'plaid/update' => 'plaid#update'
 
+  get 'stripe/new' => 'stripe#new'
+  post 'stripe/create' => 'stripe#create'
+
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

@@ -14,7 +14,7 @@ enum role: [:user, :vip, :admin]
 
   def plaid_password
     # needed for form_for
-      # leave blank, we don't want to store bank info
+    # leave blank, we don't want to store bank info
   end
 
   # Include default devise modules. Others available are:

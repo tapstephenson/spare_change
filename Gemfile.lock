@@ -97,6 +97,11 @@ GEM
     ffi (1.9.6)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
+    handlebars_assets (0.20.2)
+      execjs (~> 2.0)
+      multi_json (~> 1.0)
+      sprockets (>= 2.0.0, < 4.0)
+      tilt (~> 1.2)
     hashie (3.4.2)
     hitimes (1.2.2)
     httparty (0.13.5)
@@ -284,6 +289,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   faker
+  handlebars_assets
   httparty
   jbuilder (~> 2.0)
   jquery-rails
@@ -310,4 +316,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.10.3
+   1.10.4

@@ -3,15 +3,15 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :name
       t.integer :role
-
-      t.string :username
-      t.string :account_type
-      t.string :uid # uid is for paypal - delete if we don't use paypal
       t.references :charity
-      
+
+      ## Paypal - delete if we don't use paypal
+      # t.string :uid
+
       ## Plaid
+      t.string :account_type
       t.string :plaid_access_token
-      
+
       ## Database authenticatable
       t.string :email,              :null => false, :default => ""
       t.string :encrypted_password, :null => false, :default => ""

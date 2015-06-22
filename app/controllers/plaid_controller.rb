@@ -1,18 +1,17 @@
 class PlaidController < ApplicationController
+  # TODO:
+  #   identify user before actions
+
 
   def new
-    # this is the user id from sessions
-    id = session["warden.user.user.key"][0][0]
-    @user = User.find(id)
+    @user = current_user
     @banks = [[], ['American Express', 'amex'], ['Charles Schwab', 'schwab'], ['Fidelity', 'fidelity'], ['Wells Fargo', 'wells']]
 
     render :new
   end
 
   def create
-    # this is the user id from sessions
-    id = session["warden.user.user.key"][0][0]
-    @user = User.find(id)
+    @user = current_user
 
     # retrieve user data from plaid
     user_data = HTTParty.post("https://tartan.plaid.com/auth",
@@ -28,7 +27,12 @@ class PlaidController < ApplicationController
 
     # add plaid access token to user profile
     @user.plaid_access_token = user_data.parsed_response["access_token"]
-    @user.save!
+    @user.save
+
+    #add plaid bank account type to user profile
+    bank = Bank.find_by(account_type: params[:account_type])
+    @user.bank_id = bank.id
+    @user.save
 
     # redirect to home on successful signup
     redirect_to '/'
@@ -39,19 +43,38 @@ class PlaidController < ApplicationController
   end
 
   def edit
-    # this is the user id from sessions
-    id = session["warden.user.user.key"][0][0]
-    @user = User.find(id)
+    @user = current_user
 
-    @banks = [[], ['American Express', 'amex'], ['Charles Schwab', 'schwab'], ['Fidelity', 'fidelity'], ['Wells Fargo', 'wells']]
+    @bank = @user.bank.bank_name
 
-    render :new
+    render :edit
   end
 
   def update
+    user = current_user
+
+    update_plaid_user_data = ActiveSupport::JSON.decode(`curl -X PATCH https://tartan.plaid.com/auth \
+  -d client_id=#{ENV['PLAID_CLIENT_ID']} \
+  -d secret=#{ENV['PLAID_SECRET']} \
+  -d username=#{params['user']['plaid_username']} \
+  -d password=#{params['user']['plaid_password']} \
+  -d access_token=#{user.plaid_access_token}`)
+
+    user.plaid_access_token = update_plaid_user_data["access_token"]
+    user.save
+
+    redirect_to '/'
   end
 
   def delete
+    user = current_user
+
+    user.bank = nil
+    user.plaid_access_token = nil
+    user.save
+
+    redirect_to '/'
+
   end
 
 end

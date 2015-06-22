@@ -12,6 +12,10 @@ class CreateUsers < ActiveRecord::Migration
       t.references :bank
       t.string :plaid_access_token
 
+      ## Stripe
+      t.string :stripe_customer_id
+      t.string :stripe_subscription_id
+
       ## Database authenticatable
       t.string :email,              :null => false, :default => ""
       t.string :encrypted_password, :null => false, :default => ""

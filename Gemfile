@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby "2.1.5"
 # make JSON requests to APIs
 gem 'httparty'
 # Use paypal sdk to process payments
@@ -35,6 +36,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'pundit'
+
+gem "sidekiq"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -1,7 +1,6 @@
 class PlaidController < ApplicationController
 
   def new
-    if !current_user.bank || !current_user.plaid_access_token
       @banks = []
 
       Bank.all.each do |bank|
@@ -9,14 +8,6 @@ class PlaidController < ApplicationController
       end
 
       render :new
-    else
-      if current_user.stripe_customer_id && current_user.stripe_subscription_id
-        redirect_to '/'
-      else
-        redirect_to stripe_new_path
-      end
-    end
-
   end
 
   def create
@@ -41,11 +32,7 @@ class PlaidController < ApplicationController
     current_user.update_attributes(bank_id: bank.id)
     # current_user.save
 
-    if current_user.stripe_customer_id && current_user.stripe_subscription_id
-      redirect_to '/'
-    else
-      redirect_to stripe_new_path
-    end
+    redirect_to '/'
   end
 
   def show

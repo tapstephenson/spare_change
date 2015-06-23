@@ -1,15 +1,16 @@
 class PlaidController < ApplicationController
-  # TODO:
-  #   identify user before actions
 
   def new
-    @user = current_user
-
     if !current_user.bank || !current_user.plaid_access_token
-      @banks = [[], ['American Express', 'amex'], ['Charles Schwab', 'schwab'], ['Fidelity', 'fidelity'], ['Wells Fargo', 'wells']]
+      @banks = []
+
+      Bank.all.each do |bank|
+        @banks << [bank.bank_name, bank.account_type]
+      end
+
       render :new
     else
-      if @user.stripe_customer_id && @user.stripe_subscription_id
+      if current_user.stripe_customer_id && current_user.stripe_subscription_id
         redirect_to '/'
       else
         redirect_to stripe_new_path
@@ -19,8 +20,6 @@ class PlaidController < ApplicationController
   end
 
   def create
-    @user = current_user
-
     # retrieve user data from plaid
     user_data = HTTParty.post("https://tartan.plaid.com/auth",
       body:{
@@ -34,15 +33,15 @@ class PlaidController < ApplicationController
     )
 
     # add plaid access token to user profile
-    @user.plaid_access_token = user_data.parsed_response["access_token"]
-    @user.save
+    current_user.plaid_access_token = user_data.parsed_response["access_token"]
+    current_user.save
 
     #add plaid bank account type to user profile
     bank = Bank.find_by(account_type: params[:account_type])
-    @user.bank_id = bank.id
-    @user.save
+    current_user.update_attributes(bank_id: bank.id)
+    # current_user.save
 
-    if @user.stripe_customer_id && @user.stripe_subscription_id
+    if current_user.stripe_customer_id && current_user.stripe_subscription_id
       redirect_to '/'
     else
       redirect_to stripe_new_path
@@ -53,15 +52,11 @@ class PlaidController < ApplicationController
   end
 
   def edit
-    @user = current_user
-    @bank = @user.bank.bank_name
-
+    @bank = current_user.bank.bank_name
     render :edit
   end
 
   def update
-    user = current_user
-
     update_plaid_user_data = ActiveSupport::JSON.decode(`curl -X PATCH https://tartan.plaid.com/auth \
   -d client_id=#{ENV['PLAID_CLIENT_ID']} \
   -d secret=#{ENV['PLAID_SECRET']} \
@@ -69,18 +64,16 @@ class PlaidController < ApplicationController
   -d password=#{params['user']['plaid_password']} \
   -d access_token=#{user.plaid_access_token}`)
 
-    user.plaid_access_token = update_plaid_user_data["access_token"]
-    user.save
+    current_user.plaid_access_token = update_plaid_user_data["access_token"]
+    current_user.save
 
     redirect_to '/'
   end
 
   def delete
-    user = current_user
-
-    user.bank = nil
-    user.plaid_access_token = nil
-    user.save
+    current_user.bank = nil
+    current_user.plaid_access_token = nil
+    current_user.save
 
     redirect_to '/'
   end

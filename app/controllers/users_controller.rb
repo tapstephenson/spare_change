@@ -1,20 +1,16 @@
 class UsersController < ApplicationController
+  include User_concerns
+
   before_filter :authenticate_user!
   after_action :verify_authorized
+  before_action :find_user, only: [:show, :update, :destroy]
+  before_action :authorize_user, only: [:show, :update, :destroy]
 
   def index
-    @users = User.all
     authorize User
   end
 
-  def show
-    @user = User.find(params[:id])
-    authorize @user
-  end
-
   def update
-    @user = User.find(params[:id])
-    authorize @user
     if @user.update_attributes(secure_params)
       redirect_to users_path, :notice => "User updated."
     else

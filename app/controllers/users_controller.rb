@@ -10,6 +10,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     authorize @user
+
+    @total_contributions = @user.total_contributions
+
   end
 
   def update

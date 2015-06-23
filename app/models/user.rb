@@ -12,6 +12,15 @@ enum role: [:user, :vip, :admin]
     UserMailer.delay.welcome_email(self)
   end
 
+  def total_contributions
+    # self.transactions.sum(:difference)
+    sum = 0
+    self.transactions.each do |transaction|
+      sum += transaction.difference
+    end
+    sum
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

@@ -36,13 +36,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'pundit'
-<<<<<<< HEAD
 
-gem "sidekiq"
-=======
 # Use sidekiq for background processing
 gem 'sidekiq'
->>>>>>> 91fcded94a1d807f418c6438ff853c3083c9ad03
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

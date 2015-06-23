@@ -5,9 +5,6 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :role
       t.references :charity
 
-      ## Paypal - delete if we don't use paypal
-      # t.string :uid
-
       ## Plaid
       t.references :bank
       t.string :plaid_access_token

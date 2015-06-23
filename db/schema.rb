@@ -63,11 +63,11 @@ ActiveRecord::Schema.define(version: 20150621232535) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.integer  "role"
+    t.string   "username"
+    t.string   "account_type"
+    t.string   "uid"
     t.integer  "charity_id"
-    t.integer  "bank_id"
     t.string   "plaid_access_token"
-    t.string   "stripe_customer_id"
-    t.string   "stripe_subscription_id"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

@@ -13,9 +13,6 @@
       <%= f.password_field :plaid_password, class: 'form-control' %>
     </div>
     <%= f.submit 'Update', :class => 'button right' %>
-    <%= button_to "Remove account", plaid_delete_path, :class => "button left" %>
+    <a href="<%= plaid_delete_path %>"><input type="button" value="Remove bank info" class ="button left"/></a>
   <% end %>
 </div>
-
-
-

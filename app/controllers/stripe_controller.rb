@@ -65,6 +65,12 @@ class StripeController < ApplicationController
     # deletes card information
     customer.delete
 
+    user.stripe_customer_id = nil
+    user.stripe_subscription_id = nil
+    user.save
+
+    p "delete ran"
+
     redirect_to '/'
   end
 

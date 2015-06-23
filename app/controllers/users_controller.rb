@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 
   def destroy
     user = User.find(params[:id])
+    p "user deleted1!"
     authorize user
     user.destroy
     redirect_to users_path, :notice => "User deleted."

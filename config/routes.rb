@@ -19,13 +19,16 @@ Rails.application.routes.draw do
   patch 'plaid/create' => 'plaid#create'
   get 'plaid/update' => 'plaid#edit'
   patch 'plaid/update' => 'plaid#update'
-  post 'plaid/delete' => 'plaid#delete'
+  get 'plaid/delete' => 'plaid#delete'
 
   get 'stripe/new' => 'stripe#new'
   post 'stripe/create' => 'stripe#create'
   get '/stripe/update' => 'stripe#edit'
   post '/stripe/update' => 'stripe#update'
   get '/stripe/delete' => 'stripe#delete'
+
+
+  get '/settings/index' => 'settings#index'
 
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

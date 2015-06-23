@@ -29,6 +29,6 @@
       <input class="form-control" type="text" name="card[cvc]">
     </div>
     <input type="submit" value="Sign up" class="button right">
-    <%= button_to "Remove current card", stripe_delete_path, :class => "button left" %>
+    <a href="<%= stripe_delete_path %>"><input type="button" value="Remove current card" class ="button left"/></a>
   </form>
 </div>

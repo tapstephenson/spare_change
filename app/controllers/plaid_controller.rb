@@ -2,12 +2,20 @@ class PlaidController < ApplicationController
   # TODO:
   #   identify user before actions
 
-
   def new
     @user = current_user
-    @banks = [[], ['American Express', 'amex'], ['Charles Schwab', 'schwab'], ['Fidelity', 'fidelity'], ['Wells Fargo', 'wells']]
 
-    render :new
+    if !current_user.bank || !current_user.plaid_access_token
+      @banks = [[], ['American Express', 'amex'], ['Charles Schwab', 'schwab'], ['Fidelity', 'fidelity'], ['Wells Fargo', 'wells']]
+      render :new
+    else
+      if @user.stripe_customer_id && @user.stripe_subscription_id
+        redirect_to '/'
+      else
+        redirect_to stripe_new_path
+      end
+    end
+
   end
 
   def create
@@ -34,9 +42,11 @@ class PlaidController < ApplicationController
     @user.bank_id = bank.id
     @user.save
 
-    # redirect to home on successful signup
-    redirect_to '/'
-
+    if @user.stripe_customer_id && @user.stripe_subscription_id
+      redirect_to '/'
+    else
+      redirect_to stripe_new_path
+    end
   end
 
   def show
@@ -44,7 +54,6 @@ class PlaidController < ApplicationController
 
   def edit
     @user = current_user
-
     @bank = @user.bank.bank_name
 
     render :edit
@@ -74,7 +83,6 @@ class PlaidController < ApplicationController
     user.save
 
     redirect_to '/'
-
   end
 
 end

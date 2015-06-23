@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def index
     authorize User
+    all_users
   end
 
   def update

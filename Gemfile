@@ -32,12 +32,17 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-# Use these gems for user auth
+# Use bootstrap, devise and pundit for user auth
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'pundit'
+<<<<<<< HEAD
 
 gem "sidekiq"
+=======
+# Use sidekiq for background processing
+gem 'sidekiq'
+>>>>>>> 91fcded94a1d807f418c6438ff853c3083c9ad03
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

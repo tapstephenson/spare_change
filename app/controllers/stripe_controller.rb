@@ -33,18 +33,16 @@ class StripeController < ApplicationController
   end
 
   def delete
-    user = current_user
-
     # retrieves customer data by their customer id and deletes their subscription
-    customer = Stripe::Customer.retrieve(user.stripe_customer_id)
-    customer.subscriptions.retrieve(user.stripe_subscription_id).delete
+    customer = Stripe::Customer.retrieve(current_user.stripe_customer_id)
+    customer.subscriptions.retrieve(current_user.stripe_subscription_id).delete
 
     # deletes card information
     customer.delete
 
-    user.stripe_customer_id = nil
-    user.stripe_subscription_id = nil
-    user.save
+    current_user.stripe_customer_id = nil
+    current_user.stripe_subscription_id = nil
+    current_user.save
 
     p "delete ran"
 

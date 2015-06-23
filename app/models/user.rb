@@ -21,8 +21,7 @@ enum role: [:user, :vip, :admin]
   end
 
   def send_welcome_email
-    # UserMailer.delay.welcome_email(self)
-    UserMailer.delay.welcome_email(self)
+    UserMailer.delay.welcome_email(self.id)
   end
 
   # Include default devise modules. Others available are:

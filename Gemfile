@@ -20,6 +20,9 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# stripe API
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
 # allow use of handlebars in rails views
 gem 'handlebars_assets'
 

@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 20150621232535) do
     t.string   "transaction_account"
     t.string   "transaction_id"
     t.decimal  "amount",              precision: 10, scale: 2
+    t.decimal  "rounded_amount",      precision: 10, scale: 2
+    t.decimal  "difference",          precision: 10, scale: 2
     t.date     "date"
     t.string   "name"
     t.boolean  "pending"

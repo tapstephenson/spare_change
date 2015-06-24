@@ -1,16 +1,35 @@
 Rails.application.routes.draw do
+  # lines 3 & 4 are for paypal if we use it.
+  # get "/auth/paypal/callback", to: "sessions#create"
+  # resource :session
 
-  get "/auth/paypal/callback", to: "sessions#create"
-
-  resource :session
+  # devise_for and resources are for devise
+  devise_for :users
+  resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'sessions#index'
+  # root 'sessions#index'
+  root to: 'visitors#index' #this is for devise
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
+  get 'plaid/new' => 'plaid#new'
+  patch 'plaid/create' => 'plaid#create'
+  get 'plaid/update' => 'plaid#edit'
+  patch 'plaid/update' => 'plaid#update'
+  get 'plaid/delete' => 'plaid#delete'
+
+  get 'stripe/new' => 'stripe#new'
+  post 'stripe/create' => 'stripe#create'
+  get '/stripe/update' => 'stripe#edit'
+  post '/stripe/update' => 'stripe#update'
+  get '/stripe/delete' => 'stripe#delete'
+
+
+  get '/settings/index' => 'settings#index'
+  get '/settings/unfinished_signup' => 'settings#unfinished_signup'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

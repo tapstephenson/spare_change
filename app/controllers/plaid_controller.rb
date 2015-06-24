@@ -37,13 +37,13 @@ class PlaidController < ApplicationController
       body:{
         client_id: ENV['PLAID_CLIENT_ID'],
         secret: ENV['PLAID_SECRET'],
-        access_token: @user.plaid_access_token
+        access_token: current_user.plaid_access_token
       }
     )
     user_transactions['transactions'].each do |transaction|
       Transaction.create(
-        user_id: @user.id,
-        charity_id: @user.charity_id,
+        user_id: current_user.id,
+        charity_id: current_user.charity_id,
         transaction_account: transaction["amount"],
         transaction_id: transaction["_id"] ,
         amount: transaction["amount"],

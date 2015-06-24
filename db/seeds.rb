@@ -64,12 +64,16 @@ puts 'CREATED ADMIN USER: ' << user.email
 
 # create 1000 transactions in the past year for user
 1000.times do
+  price = Faker::Commerce.price
+
   Transaction.create(
     user_id: user.id,
     charity_id: user.charity_id,
-    transaction_account: nil,
-    transaction_id: nil,
-    amount: Faker::Commerce.price,
+    transaction_account: "",
+    transaction_id: "",
+    amount: price,
+    rounded_amount: price.ceil,
+    difference: price.ceil - price,
     date: Faker::Date.backward(365),
     name: Faker::Company.name,
     pending: false

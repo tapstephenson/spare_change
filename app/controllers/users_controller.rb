@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   before_filter :authenticate_user!
   after_action :verify_authorized
-  before_action :find_user, only: [:show, :update, :destroy]
+  # before_action :find_user, only: [:show, :update, :destroy]
   before_action :authorize_user, only: [:show, :update, :destroy]
 
   def index

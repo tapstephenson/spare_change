@@ -44,10 +44,10 @@ plaid_new_user_data = HTTParty.post("https://tartan.plaid.com/auth",
     type: 'wells'
   }
 )
+user.bank_id = 4
 user.plaid_access_token = plaid_new_user_data.parsed_response["access_token"]
-user.save
 
-# Stripe API call to sign up customer on subscription plan
+# add Stripe data to seed user
 stripe_new_user_data = ActiveSupport::JSON.decode(`curl https://api.stripe.com/v1/customers \
    -u sk_test_5Lq3TlyeL7o86D0pMfJXo5Vz: \
    -d card[number]=4242424242424242 \
@@ -62,23 +62,22 @@ user.save
 # user creation confirmation
 puts 'CREATED ADMIN USER: ' << user.email
 
-# process for retrieving transactions via Plaid
-user_transactions = HTTParty.post("https://tartan.plaid.com/connect/get",
-  body:{
-    client_id: ENV['PLAID_CLIENT_ID'],
-    secret: ENV['PLAID_SECRET'],
-    access_token: user.plaid_access_token
-  }
-)
-user_transactions['transactions'].each do |transaction|
+# create 1000 transactions in the past year for user
+1000.times do
   Transaction.create(
     user_id: user.id,
     charity_id: user.charity_id,
-    transaction_account: transaction["amount"],
-    transaction_id: transaction["_id"] ,
-    amount: transaction["amount"],
-    date: transaction["date"] ,
-    name: transaction["name"],
-    pending: transaction["pending"]
-  )
+    transaction_account: nil,
+    transaction_id: nil,
+    amount: Faker::Commerce.price,
+    date: Faker::Date.backward(365),
+    name: Faker::Company.name,
+    pending: false
+    )
 end
+
+puts 'ADDED TRANSACTIONS FOR ' << user.email
+puts 'SEED COMPLETE!'
+
+
+

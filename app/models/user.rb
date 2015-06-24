@@ -9,7 +9,6 @@ enum role: [:user, :vip, :admin]
     self.role ||= :user
   end
 
-
   def plaid_username
     # needed for form_for
     # leave blank, we don't want to store bank info

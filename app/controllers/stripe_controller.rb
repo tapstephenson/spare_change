@@ -1,52 +1,29 @@
 class StripeController < ApplicationController
+  include StripeConcerns
   # protect_from_forgery with: :null_session
   protect_from_forgery except: :create
-  Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+  before_action :authorize_stripe, only: [:create, :update, :delete]
 
   def new
-
-    # this is the user id from sessions
-    @current_year = Time.now.year
-
     render :new
   end
 
   def create
-    user = current_user
-    p user
-    p params['card']['number']
-    p params['card']['exp_month']
-    p params['card']['exp_year']
-    p params['card']['cvc']
-
     # Stripe API call to sign up customer on subscription plan
     stripe_new_user_data = ActiveSupport::JSON.decode(`curl https://api.stripe.com/v1/customers \
-      -u #{ENV['STRIPE_SECRET_KEY']}: \
+      -u #{Stripe.api_key}: \
       -d card[number]=#{params['card']['number']} \
       -d card[exp_month]=#{params['card']['exp_month']} \
       -d card[exp_year]=#{params['card']['exp_year']} \
       -d card[cvc]=#{params['card']['cvc']} \
       -d plan=#{params['frequency']}`)
-    p stripe_new_user_data
 
-    # Stripe dummy data
-    # 4242424242424242
-    # 12
-    # 2016
-    # 123
-
-    user.stripe_customer_id = stripe_new_user_data['id']
-    user.stripe_subscription_id = stripe_new_user_data['subscriptions']['data'][0]['id']
-    user.save
-
+    current_user.update_attributes(stripe_customer_id: stripe_new_user_data['id'], 
+                                   stripe_subscription_id: stripe_new_user_data['subscriptions']['data'][0]['id'])
     redirect_to '/'
   end
 
   def edit
-
-    # this is the user id from sessions
-    @current_year = Time.now.year
-
     render :edit
   end
 
@@ -56,18 +33,16 @@ class StripeController < ApplicationController
   end
 
   def delete
-    user = current_user
-
     # retrieves customer data by their customer id and deletes their subscription
-    customer = Stripe::Customer.retrieve(user.stripe_customer_id)
-    customer.subscriptions.retrieve(user.stripe_subscription_id).delete
+    customer = Stripe::Customer.retrieve(current_user.stripe_customer_id)
+    customer.subscriptions.retrieve(current_user.stripe_subscription_id).delete
 
     # deletes card information
     customer.delete
 
-    user.stripe_customer_id = nil
-    user.stripe_subscription_id = nil
-    user.save
+    current_user.stripe_customer_id = nil
+    current_user.stripe_subscription_id = nil
+    current_user.save
 
     p "delete ran"
 

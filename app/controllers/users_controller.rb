@@ -11,10 +11,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    authorize @user
 
     @total_contributions = @user.total_contributions
+    @current_month_total = @user.current_month_total
+    @previous_month_total = @user.previous_month_total
 
   end
 

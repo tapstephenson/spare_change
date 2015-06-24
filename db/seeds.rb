@@ -29,7 +29,10 @@ Charity.create( name: "National Fish and Wildlife Foundation",
                 description: "Protect and restore our nation's fish, wildlife, and habitats by investing federal dollars in the most pressing conservation needs and matching those dollars with private funds.",
                 logo_url: "http://www.nhm.ku.edu/komar/research/logonfwf.jpg")
 
-# process for retrieving Plaid access token (will be used in signup)
+# Create seed user
+user = User.create(name: "Tapley Stephenson", email: "tapley.stephenson@gmail.com", password: "12345678", password_confirmation: "12345678", charity_id: 1, role: 2)
+
+# add Plaid data to seed user
 plaid_new_user_data = HTTParty.post("https://tartan.plaid.com/auth",
   body:{
     client_id: ENV['PLAID_CLIENT_ID'],

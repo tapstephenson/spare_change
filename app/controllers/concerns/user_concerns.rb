@@ -9,7 +9,7 @@ module UserConcerns
       User.all
     end
     def all_charities
-      Charity.all
+      @charities = Charity.all
     end
     def authorize_user
       authorize current_user

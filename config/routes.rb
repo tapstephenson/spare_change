@@ -13,9 +13,23 @@ Rails.application.routes.draw do
   # root 'sessions#index'
   root to: 'visitors#index' #this is for devise
 
-
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
+  get 'plaid/new' => 'plaid#new'
+  patch 'plaid/create' => 'plaid#create'
+  get 'plaid/update' => 'plaid#edit'
+  patch 'plaid/update' => 'plaid#update'
+  get 'plaid/delete' => 'plaid#delete'
+
+  get 'stripe/new' => 'stripe#new'
+  post 'stripe/create' => 'stripe#create'
+  get '/stripe/update' => 'stripe#edit'
+  post '/stripe/update' => 'stripe#update'
+  get '/stripe/delete' => 'stripe#delete'
+
+
+  get '/settings/index' => 'settings#index'
+  get '/settings/unfinished_signup' => 'settings#unfinished_signup'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

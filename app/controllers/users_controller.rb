@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   include UserConcerns
 
   before_filter :authenticate_user!
@@ -12,10 +13,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    authorize @user
-
-    @total_contributions = @user.total_contributions
+    @total_contributions = current_user.total_contributions
+    @current_month_total = current_user.current_month_total
+    @previous_month_total = current_user.previous_month_total
 
   end
 

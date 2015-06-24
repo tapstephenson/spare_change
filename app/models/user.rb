@@ -25,13 +25,35 @@ enum role: [:user, :vip, :admin]
   end
 
   def total_contributions
-    # self.transactions.sum(:difference)
-    sum = 0
-    self.transactions.each do |transaction|
-      sum += transaction.difference
-    end
-    sum
+    self.transactions.sum(:difference)
   end
+
+  def correct_month?(transaction, month, year)
+    transaction.date.month.to_i == month && transaction.date.year.to_i == year
+  end
+
+  def month_total(month, year)
+    total = 0.0
+    self.transactions.each do |transaction|
+      total += transaction.difference.to_f if correct_month?(transaction, month, year)
+    end
+    total
+  end
+
+  def current_month_total
+    month_total(Time.now.month, Time.now.year)
+  end
+
+  def previous_month_total
+    year_adjust = 0
+    year_adjust = 1 if Time.now.month == 1
+
+    month_total((Time.now.month - 1) % 12, Time.now.year - year_adjust)
+  end
+
+
+
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

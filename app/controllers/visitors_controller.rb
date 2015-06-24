@@ -1,14 +1,13 @@
 class VisitorsController < ApplicationController
+  include UsersConcerns
+
   def index
-    p current_user
     if current_user
-      if current_user.bank && current_user.plaid_access_token &&
-        current_user.stripe_customer_id && current_user.stripe_subscription_id
+      if profile_complete
         p "profile complete"
         render :loggedin
       else
-        p "profile incomplete"
-        render :completesignup
+        redirect_to settings_unfinished_signup_path
       end
     else
       p "logged out"

@@ -3,7 +3,7 @@
   <div class="help-block">
     We don't keep any of your banking information besides the name of your bank, so to update, you'll have to start from scratch.
   </div>
-  <%= form_for @user, :url => plaid_update_path(@user) do |f| %>
+  <%= form_for current_user, :url => plaid_update_path(current_user) do |f| %>
     <div class="form-group">
       <%= f.label "Online banking username" %>
       <%= f.text_field :plaid_username, class: 'form-control' %>

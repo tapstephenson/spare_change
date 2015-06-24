@@ -1,20 +1,14 @@
-# user and created admin user are for devise/pundit
-user = CreateAdminService.new.call
-
-# additional attributes for Spare Change
-user.name = 'Tapley Stephenson',
-user.charity_id = 1,
-user.role = 2,
-user.save!
+# # user and created admin user are for devise/pundit
+# user = CreateAdminService.new.call
 
 # this is bank data for Plaid API
-Bank.create(bank_name: 'American Express', 
+Bank.create(bank_name: 'American Express',
             account_type: 'amex')
-Bank.create(bank_name: 'Charles Schwab', 
+Bank.create(bank_name: 'Charles Schwab',
             account_type: 'scwab')
-Bank.create(bank_name: 'Fidelity', 
+Bank.create(bank_name: 'Fidelity',
             account_type: 'fidelity')
-Bank.create(bank_name: 'Wells Fargo', 
+Bank.create(bank_name: 'Wells Fargo',
             account_type: 'wells')
 
 # create Charities

@@ -1,6 +1,6 @@
 <h3>Please Select Your Charity</h3>
 <%= form_for current_user, :url => charities_update_path(current_user) do |f| %>
-  <% Charity.all.each do |charity| %>
+  <% @charities.all.each do |charity| %>
     <%= radio_button_tag("id", charity.id) %>
     <%= image_tag(charity.logo_url) %>
     <%= label_tag(:charity, charity.name + ": " + charity.description) %>

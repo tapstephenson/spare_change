@@ -6,7 +6,7 @@ module UserConcerns
       User.find(params[:id])
     end
     def all_users
-      User.all
+      @users = User.all
     end
     def all_charities
       @charities = Charity.all

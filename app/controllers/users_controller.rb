@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   include UserConcerns
 
   before_filter :authenticate_user!
@@ -9,6 +10,13 @@ class UsersController < ApplicationController
   def index
     authorize User
     all_users
+  end
+
+  def show
+    @total_contributions = current_user.total_contributions
+    @current_month_total = current_user.current_month_total
+    @previous_month_total = current_user.previous_month_total
+
   end
 
   def update

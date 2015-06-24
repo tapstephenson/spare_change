@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if find_user.update_attributes(secure_params)
+    if current_user.update_attributes(secure_role_params)
       redirect_to users_path, :notice => "User updated."
     else
       redirect_to users_path, :alert => "Unable to update user."
@@ -22,13 +22,17 @@ class UsersController < ApplicationController
   def destroy
     p "user deleted1!"
     authorize user
-    find_user.destroy
+    current_user.destroy
     redirect_to users_path, :notice => "User deleted."
   end
 
   private
 
-  def secure_params
+  def secure_role_params
     params.require(:user).permit(:role)
+  end
+
+  def secure_charity_params
+    params.require(:user).permit(:id, :user_id)
   end
 end

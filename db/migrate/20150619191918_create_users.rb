@@ -5,12 +5,13 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :role
       t.references :charity
 
-      ## Paypal - delete if we don't use paypal
-      # t.string :uid
-
       ## Plaid
-      t.string :account_type
+      t.references :bank
       t.string :plaid_access_token
+
+      ## Stripe
+      t.string :stripe_customer_id
+      t.string :stripe_subscription_id
 
       ## Database authenticatable
       t.string :email,              :null => false, :default => ""

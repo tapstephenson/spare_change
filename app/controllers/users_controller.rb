@@ -1,21 +1,27 @@
 class UsersController < ApplicationController
+
+  include UserConcerns
+
   before_filter :authenticate_user!
   after_action :verify_authorized
+  before_action :find_user, only: [:show, :update, :destroy]
+  before_action :authorize_user, only: [:show, :update, :destroy]
 
   def index
-    @users = User.all
     authorize User
+    all_users
   end
 
   def show
-    @user = User.find(params[:id])
-    authorize @user
+
+    @total_contributions = @user.total_contributions
+    @current_month_total = @user.current_month_total
+    @previous_month_total = @user.previous_month_total
+
   end
 
   def update
-    @user = User.find(params[:id])
-    authorize @user
-    if @user.update_attributes(secure_params)
+    if find_user.update_attributes(secure_params)
       redirect_to users_path, :notice => "User updated."
     else
       redirect_to users_path, :alert => "Unable to update user."
@@ -23,9 +29,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    user = User.find(params[:id])
+    p "user deleted1!"
     authorize user
-    user.destroy
+    find_user.destroy
     redirect_to users_path, :notice => "User deleted."
   end
 
@@ -34,5 +40,4 @@ class UsersController < ApplicationController
   def secure_params
     params.require(:user).permit(:role)
   end
-
 end

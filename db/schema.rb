@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150619191943) do
+ActiveRecord::Schema.define(version: 20150621232535) do
+
+  create_table "banks", force: :cascade do |t|
+    t.string   "bank_name"
+    t.string   "account_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "charges", force: :cascade do |t|
     t.integer  "user_id"
@@ -46,6 +53,8 @@ ActiveRecord::Schema.define(version: 20150619191943) do
     t.string   "transaction_account"
     t.string   "transaction_id"
     t.decimal  "amount",              precision: 10, scale: 2
+    t.decimal  "rounded_amount",      precision: 10, scale: 2
+    t.decimal  "difference",          precision: 10, scale: 2
     t.date     "date"
     t.string   "name"
     t.boolean  "pending"
@@ -57,8 +66,10 @@ ActiveRecord::Schema.define(version: 20150619191943) do
     t.string   "name"
     t.integer  "role"
     t.integer  "charity_id"
-    t.string   "account_type"
+    t.integer  "bank_id"
     t.string   "plaid_access_token"
+    t.string   "stripe_customer_id"
+    t.string   "stripe_subscription_id"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

@@ -21,6 +21,9 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# stripe API
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
 # allow use of handlebars in rails views
 gem 'handlebars_assets'
 
@@ -36,13 +39,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'pundit'
-<<<<<<< HEAD
 
-gem "sidekiq"
-=======
 # Use sidekiq for background processing
 gem 'sidekiq'
->>>>>>> 91fcded94a1d807f418c6438ff853c3083c9ad03
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -1,5 +1,5 @@
 <div class='authform'>
-  <%= form_for @user, :url => plaid_create_path(@user) do |f| %>
+  <%= form_for current_user, :url => plaid_create_path(current_user) do |f| %>
     <div class="form-group">
       <%= f.label "Select online bank" %>
       <%= select_tag :account_type, options_for_select(@banks) %>

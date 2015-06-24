@@ -80,3 +80,6 @@ dump.rdb
 # Environment files that may contain sensitive data
 .env
 .powenv
+
+# Redis Dump
+dump.rdb

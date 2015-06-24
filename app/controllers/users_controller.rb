@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  include UsersConcerns
+  include UserConcerns
 
   before_filter :authenticate_user!
   after_action :verify_authorized

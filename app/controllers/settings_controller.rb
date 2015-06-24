@@ -15,6 +15,7 @@ class SettingsController < ApplicationController
     elsif !stripe_complete
       redirect_to stripe_new_path
     elsif !charity_complete
+      all_charities
       redirect_to charities_index_path
     end
   end

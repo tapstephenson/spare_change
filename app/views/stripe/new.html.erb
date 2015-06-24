@@ -19,7 +19,7 @@
       </div>
       <div class="form-group">
         <label>Exp. year</label>
-        <input class="form-control" type="number" name="card[exp_year]" min="<%= @current_year %>" max="<%= (@current_year + 30) %>">
+        <input class="form-control" type="number" name="card[exp_year]" min="<%= Time.now.year %>" max="<%= (Time.now.year + 30) %>">
       </div>
       <div class="form-group">
         <label>CVC</label>

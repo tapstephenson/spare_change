@@ -42,6 +42,28 @@ class PlaidController < ApplicationController
     @user.bank_id = bank.id
     @user.save
 
+    # process for retrieving transactions via Plaid
+    user_transactions = HTTParty.post("https://tartan.plaid.com/connect/get",
+      body:{
+        client_id: ENV['PLAID_CLIENT_ID'],
+        secret: ENV['PLAID_SECRET'],
+        access_token: @user.plaid_access_token
+      }
+    )
+    user_transactions['transactions'].each do |transaction|
+      Transaction.create(
+        user_id: @user.id,
+        charity_id: @user.charity_id,
+        transaction_account: transaction["amount"],
+        transaction_id: transaction["_id"] ,
+        amount: transaction["amount"],
+        date: transaction["date"] ,
+        name: transaction["name"],
+        pending: transaction["pending"]
+      )
+    end
+
+
     if @user.stripe_customer_id && @user.stripe_subscription_id
       redirect_to '/'
     else

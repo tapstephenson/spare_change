@@ -80,7 +80,7 @@ puts 'CREATED ADMIN USER: ' << user.email
     )
 end
 
-puts 'ADDED TRANSACTIONS FOR ' << user.email
+puts 'ADDED TRANSACTIONS FOR: ' << user.email
 puts 'SEED COMPLETE!'
 
 

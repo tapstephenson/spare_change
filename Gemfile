@@ -42,6 +42,8 @@ gem 'pundit'
 
 # Use sidekiq for background processing
 gem 'sidekiq'
+# Use sidetiq to schedule processes
+gem 'sidetiq'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

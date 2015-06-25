@@ -6,21 +6,27 @@ module UserConcerns
       User.find(params[:id])
     end
     def all_users
-      User.all
+      @users = User.all
+    end
+    def all_charities
+      @charities = Charity.all
     end
     def authorize_user
-      authorize find_user
+      authorize current_user
     end
     def profile_complete
-      current_user.bank &&
-      current_user.plaid_access_token &&
-      current_user.stripe_customer_id &&
-      current_user.stripe_subscription_id
+      plaid_complete &&
+      stripe_complete &&
+      charity_complete
     end
 
     def plaid_complete
       current_user.bank &&
       current_user.plaid_access_token
+    end
+
+    def charity_complete
+      current_user.charity_id
     end
 
     def stripe_complete

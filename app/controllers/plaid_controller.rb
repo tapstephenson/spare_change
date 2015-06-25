@@ -2,11 +2,9 @@ class PlaidController < ApplicationController
 
   def new
       @banks = []
-
       Bank.all.each do |bank|
         @banks << [bank.bank_name, bank.account_type]
       end
-
       render :new
   end
 

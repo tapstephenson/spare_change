@@ -31,6 +31,9 @@ Charity.create( name: "National Fish and Wildlife Foundation",
 
 # Create seed user
 user = User.create(name: "Tapley Stephenson", email: "tapley.stephenson@gmail.com", password: "12345678", password_confirmation: "12345678", charity_id: 1, role: 2)
+# Override created_at to utilize year's worth of transactions
+user.update_attributes(created_at: 1.year.ago)
+
 
 # add Plaid data to seed user
 plaid_new_user_data = HTTParty.post("https://tartan.plaid.com/auth",

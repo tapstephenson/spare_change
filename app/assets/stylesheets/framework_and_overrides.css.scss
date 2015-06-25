@@ -6,8 +6,12 @@ main {
   height: 100vh;
   background-repeat: repeat;
   background-image: image-url('connected.png');
-  background-color: #ACE0BB ; /* Old browsers */
+  background-color: #ACE0BB; /* Old browsers */
 
+}
+
+.alert {
+  margin-bottom: 0px !important;
 }
 
 .btn-primary, .submit, .authform .button, .button-xs {

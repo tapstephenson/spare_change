@@ -32,7 +32,7 @@ $.ajax({
       marginBottom: 20,
 
       // Sets the angle curves
-      borderRadius: 7,
+      borderRadius: 0,
 
       // Sets the font
       // style: {
@@ -55,7 +55,7 @@ $.ajax({
     //   // }
     // },
     title: {
-        text: 'Donations'
+        text: 'Contributions'
     },
     xAxis: {
       categories: response['monthAmount']['dates'],

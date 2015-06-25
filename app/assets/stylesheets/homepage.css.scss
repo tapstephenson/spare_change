@@ -2,14 +2,11 @@ body{
   font-family: Helvetica;
 }
 
-main{
-  background-color: white;
-}
 
 #donations_stream{
   margin-top: 1%;
-  border: 1px solid black;
-  height: 80vh;
+  background-color: white;
+  height: 90vh;
   overflow: none;
   #donation_totals{
     height: 30%;

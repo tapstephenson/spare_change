@@ -86,4 +86,50 @@ class PlaidController < ApplicationController
     redirect_to '/'
   end
 
+  def donations_graph
+    @response = {
+      dates: [],
+      cumulative_donation: [],
+      daily_donation: []
+    }
+
+    ordered_transactions = current_user.transactions.order(date: :asc)
+    cumulative_donation = 0
+    daily_donation = 0
+    first_transaction_of_day = ordered_transactions.first
+
+    ordered_transactions.each do |transaction|
+      if same_day?(first_transaction_of_day, transaction)
+        # add donation into the cumulative and keep moving
+        cumulative_donation += transaction.difference
+        daily_donation += transaction.difference
+      else
+        # when you've hit the beginning of the next day, save current data and reset daily_donation
+        @response[:dates] << first_transaction_of_day.date.strftime("%b %e, %Y")
+        @response[:cumulative_donation] << cumulative_donation
+        @response[:daily_donation] << daily_donation
+        daily_donation = 0
+
+        # set new month's transaction to current month and add its donation
+        first_transaction_of_day = transaction
+        cumulative_donation += transaction.difference
+        daily_donation += transaction.difference
+      end
+    end
+
+    # respond_to do |format|
+    #   format.js { render json: @response }
+    # end
+
+    p @response
+    render json: {monthAmount: @response}
+
+  end
+
+  def same_day?(transaction1, transaction2)
+    transaction1.date.day == transaction2.date.day &&
+    transaction1.date.month == transaction2.date.month &&
+    transaction1.date.year == transaction2.date.year
+  end
+
 end

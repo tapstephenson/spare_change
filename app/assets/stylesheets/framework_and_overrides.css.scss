@@ -2,12 +2,27 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+main {
+  height: 100vh;
+  background-repeat: repeat;
+  background-image: image-url('connected.png');
+  background-color: #ACE0BB ; /* Old browsers */
+
+}
+
+.btn-primary, .submit, .authform .button, .button-xs {
+  background-color: #2996cc;
+  border-color: #2996cc;
+}
+
 // make all images responsive by default
 img {
   @extend .img-responsive;
   margin: 0 auto;
   }
 // override for the 'Home' navigation link
+
+
 .navbar-brand {
   font-size: inherit;
   }
@@ -34,9 +49,10 @@ img {
 // apply styles to HTML elements
 // to make views framework-neutral
 main {
-  @extend .container;
-  background-color: #eee;
-  padding-bottom: 80px;
+/*  @extend .container;
+*/  /*background-color: #eee;*/
+  /*padding-bottom: 80px;*/
+  padding: 0;
   width: 100%;
   margin-top: 51px; // accommodate the navbar
   }
@@ -80,3 +96,10 @@ section {
   @extend .btn-primary;
   @extend .btn-xs;
 }
+
+
+
+
+
+
+

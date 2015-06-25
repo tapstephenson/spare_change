@@ -15,7 +15,7 @@ Bank.create(bank_name: 'Wells Fargo',
 
 Charity.create( name: "Habitat for Humanity",
                 description: "Our mission is to provide local families with a springboard to secure, stable futures through affordable homeownership, financial literacy and neighborhood revitalization.",
-                logo_url: "http://www.habitatgsf.org/image/layout-and-template-images/25th-anniversary-horizontal-website.png")
+                logo_url: "http://www.habitatroaringfork.org/images/logo.jpg")
 Charity.create( name: "San Francisco Food Bank",
                 description: "Our mission is to end hunger in San Francisco and Marin. Farm-fresh fruits and vegetables… neighborhood pantries where people can choose their food… nutrition education classes... and much more.",
                 logo_url: "http://www.sfmfoodbank.org/sites/all/themes/sffb/images/sffb-logo.png")
@@ -64,19 +64,23 @@ puts 'CREATED ADMIN USER: ' << user.email
 
 # create 1000 transactions in the past year for user
 1000.times do
+  price = Faker::Commerce.price
+
   Transaction.create(
     user_id: user.id,
     charity_id: user.charity_id,
-    transaction_account: nil,
-    transaction_id: nil,
-    amount: Faker::Commerce.price,
+    transaction_account: "seed_transaction_account",
+    transaction_id: "seed_transaction_id",
+    amount: price,
+    rounded_amount: price.ceil,
+    difference: price.ceil - price,
     date: Faker::Date.backward(365),
     name: Faker::Company.name,
     pending: false
     )
 end
 
-puts 'ADDED TRANSACTIONS FOR ' << user.email
+puts 'ADDED TRANSACTIONS FOR: ' << user.email
 puts 'SEED COMPLETE!'
 
 

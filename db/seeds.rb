@@ -15,7 +15,7 @@ Bank.create(bank_name: 'Wells Fargo',
 
 Charity.create( name: "Habitat for Humanity",
                 description: "Our mission is to provide local families with a springboard to secure, stable futures through affordable homeownership, financial literacy and neighborhood revitalization.",
-                logo_url: "http://www.habitatgsf.org/image/layout-and-template-images/25th-anniversary-horizontal-website.png")
+                logo_url: "http://www.habitatroaringfork.org/images/logo.jpg")
 Charity.create( name: "San Francisco Food Bank",
                 description: "Our mission is to end hunger in San Francisco and Marin. Farm-fresh fruits and vegetables… neighborhood pantries where people can choose their food… nutrition education classes... and much more.",
                 logo_url: "http://www.sfmfoodbank.org/sites/all/themes/sffb/images/sffb-logo.png")

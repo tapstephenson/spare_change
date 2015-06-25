@@ -24,7 +24,7 @@ enum role: [:user, :vip, :admin]
   end
 
   def total_contributions
-    self.transactions.sum(:difference)
+    self.transactions.where(["date > ?", self.created_at]).sum(:difference)
   end
 
   def current_month_total

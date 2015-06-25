@@ -27,18 +27,6 @@ enum role: [:user, :vip, :admin]
     self.transactions.where(["date > ?", self.created_at]).sum(:difference)
   end
 
-  def correct_month?(transaction, month, year)
-    transaction.date.month.to_i == month && transaction.date.year.to_i == year
-  end
-
-  def month_total(month, year)
-    total = 0.0
-    self.transactions.where(["date > ?", self.created_at]).each do |transaction|
-      total += transaction.difference.to_f if correct_month?(transaction, month, year)
-    end
-    total
-  end
-
   def current_month_total
     month_total(Time.now.month, Time.now.year)
   end
@@ -50,14 +38,26 @@ enum role: [:user, :vip, :admin]
     month_total((Time.now.month - 1) % 12, Time.now.year - year_adjust)
   end
 
-
-
-
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :transactions
   has_many :charities
+
+  private
+
+  def correct_month?(transaction, month, year)
+    transaction.date.month.to_i == month && transaction.date.year.to_i == year
+  end
+
+  def month_total(month, year)
+    total = 0.0
+    self.transactions.each do |transaction|
+      total += transaction.difference.to_f if correct_month?(transaction, month, year)
+    end
+    total
+  end
+
+
 end

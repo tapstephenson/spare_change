@@ -24,7 +24,7 @@ enum role: [:user, :vip, :admin]
   end
 
   def total_contributions
-    self.transactions.sum(:difference)
+    self.transactions.where(["date > ?", self.created_at]).sum(:difference)
   end
 
   def correct_month?(transaction, month, year)
@@ -33,7 +33,7 @@ enum role: [:user, :vip, :admin]
 
   def month_total(month, year)
     total = 0.0
-    self.transactions.each do |transaction|
+    self.transactions.where(["date > ?", self.created_at]).each do |transaction|
       total += transaction.difference.to_f if correct_month?(transaction, month, year)
     end
     total

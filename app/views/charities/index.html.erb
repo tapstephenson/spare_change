@@ -2,7 +2,7 @@
   <h3>Please Select Your Charity</h3>
   <%= form_for current_user, :url => charities_update_path(current_user), method: :patch do |f| %>
     <% @charities.all.each do |charity| %>
-      <%= radio_button_tag("id", charity.id) %>
+      <%= radio_button_tag("id", charity.id, (current_user.charity_id == charity.id)) %>
       <%= image_tag(charity.logo_url) %>
       <%= label_tag(:charity, charity.name + ": " + charity.description) %>
     <% end %>

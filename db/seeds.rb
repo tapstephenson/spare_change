@@ -69,8 +69,8 @@ puts 'CREATED ADMIN USER: ' << user.email
   Transaction.create(
     user_id: user.id,
     charity_id: user.charity_id,
-    transaction_account: "",
-    transaction_id: "",
+    transaction_account: "seed_transaction_account",
+    transaction_id: "seed_transaction_id",
     amount: price,
     rounded_amount: price.ceil,
     difference: price.ceil - price,

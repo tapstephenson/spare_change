@@ -1,3 +1,4 @@
+<!-- <div class='charities-list col-md-12'> -->
 <div class='authform'>
   <h3>Please Select Your Charity</h3>
   <%= form_for current_user, :url => charities_update_path(current_user), method: :patch do |f| %>
@@ -9,3 +10,4 @@
     <%= f.submit 'Submit', :class => 'button right' %>
   <% end %>
 </div>
+<!-- </div> -->

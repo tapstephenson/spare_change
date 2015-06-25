@@ -21,10 +21,10 @@ Charity.create( name: "San Francisco Food Bank",
                 logo_url: "http://www.sfmfoodbank.org/sites/all/themes/sffb/images/sffb-logo.png")
 Charity.create( name: "Boys & Girls Club",
                 description: "We offer access to daily homework help, professional tutoring, support for college acceptance, and college scholarships; health and fitness, healthy eating and mental health services; free swim, learn-to-swim, and competitive swimming; nationally-recognized visual arts programs; community service opportunities; a traveling basketball program; character and leadership development programs; and much more.",
-                logo_url: "http://www.kidsclub.org/wp-content/themes/BGCSF/images/logo_home_page.gif")
+                logo_url: "http://www.fremontuniverse.com/wp-content/uploads/HANDS.bmp")
 Charity.create( name: "Planned Parenthood Federation of America",
                 description: "For more than 90 years, Planned Parenthood has promoted a commonsense approach to women's health and well-being, based on respect for each individual's right to make informed, independent decisions about health, sex, and family planning.",
-                logo_url: "https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Planned_Parenthood_logo.svg/1280px-Planned_Parenthood_logo.svg.png")
+                logo_url: "http://plannedparenthoodadvocate.typepad.com/.a/6a0147e284dcb2970b014e8905d37c970d-pi")
 Charity.create( name: "National Fish and Wildlife Foundation",
                 description: "Protect and restore our nation's fish, wildlife, and habitats by investing federal dollars in the most pressing conservation needs and matching those dollars with private funds.",
                 logo_url: "http://www.nhm.ku.edu/komar/research/logonfwf.jpg")

@@ -4,6 +4,9 @@ class VisitorsController < ApplicationController
   def index
     if current_user
       if profile_complete
+        @transactions = current_user.transactions.order(date: :desc).limit(20)
+        @charity = Charity.find(current_user.charity_id)
+
         p "profile complete"
         render :loggedin
       else

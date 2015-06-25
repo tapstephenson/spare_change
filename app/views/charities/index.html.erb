@@ -1,6 +1,6 @@
 <div class='authform'>
   <h3>Please Select Your Charity</h3>
-  <%= form_for :charity, url: charities_update_path, method: :patch do |f| %>
+  <%= form_for current_user, :url => charities_update_path(current_user), method: :patch do |f| %>
     <% @charities.all.each do |charity| %>
       <%= radio_button_tag("id", charity.id) %>
       <%= image_tag(charity.logo_url) %>

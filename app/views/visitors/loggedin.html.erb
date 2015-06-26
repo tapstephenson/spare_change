@@ -1,3 +1,5 @@
+<main role="main">
+
 <div id="donations_stream"  class="col-xs-12 col-md-3 col-md-offset-1">
   <div id="donation_totals">
     <img class="img-circle center-x" id="charity_logo" src="<%=  @charity.logo_url %>" >
@@ -8,20 +10,20 @@
         <tr><td>THIS MONTH - <%= number_to_currency(current_user.current_month_total) %></td></tr>
       </table>
     </div>
-  </div>
-  <div id="recent_transactions_container">
-    <table id="recent_transactions_table">
-      <% @transactions.each do |transaction| %>
-        <tr>
-          <td id="transaction_left">
-            <div id="transaction_name"><%= transaction.name %></div>
-            <div id="transaction_amount"><%= transaction.date.strftime("%b %e")%> | <%= number_to_currency(transaction.amount) %></div>
-          </td>
-          <td id="transaction_right"><%= number_to_currency(transaction.difference) %></td>
+    <div id="recent_transactions_container">
+      <table id="recent_transactions_table">
+        <% @transactions.each do |transaction| %>
+          <tr>
+            <td id="transaction_left">
+              <div id="transaction_name"><%= transaction.name %></div>
+              <div id="transaction_amount"><%= transaction.date.strftime("%b %e")%> | <%= number_to_currency(transaction.amount) %></div>
+            </td>
+            <td id="transaction_right"><%= number_to_currency(transaction.difference) %></td>
 
-        </tr>
-      <% end %>
-    </table>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
 </div>
 <!-- <div id="donations_graph" class="col-xs-12 col-md-8">Graph</div> -->

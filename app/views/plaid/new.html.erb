@@ -1,0 +1,19 @@
+<main role="main">
+  <div class='authform'>
+    <%= form_for current_user, :url => plaid_create_path(current_user) do |f| %>
+      <div class="form-group">
+        <%= f.label "Select online bank" %>
+        <%= select_tag :account_type, options_for_select(@banks) %>
+      </div>
+      <div class="form-group">
+        <%= f.label "Online banking username" %>
+        <%= f.text_field :plaid_username, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label "Online banking password" %>
+        <%= f.password_field :plaid_password, class: 'form-control' %>
+      </div>
+      <%= f.submit 'Sign up', :class => 'button right' %>
+    <% end %>
+  </div>
+</main>

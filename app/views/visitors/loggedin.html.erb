@@ -1,0 +1,32 @@
+<main role="main">
+
+<div id="donations_stream"  class="col-xs-12 col-md-3 col-md-offset-1">
+  <div id="donation_totals">
+    <img class="img-circle center-x" id="charity_logo" src="<%=  @charity.logo_url %>" >
+    <div id="total_contribution"><%= number_to_currency(current_user.total_contributions) %></div>
+    <div id="last_two_months_container">
+      <table id="last_two_months_table">
+        <tr><td id="last_month">LAST MONTH - <%= number_to_currency(current_user.previous_month_total) %></td></tr>
+        <tr><td>THIS MONTH - <%= number_to_currency(current_user.current_month_total) %></td></tr>
+      </table>
+    </div>
+    <div id="recent_transactions_container">
+      <table id="recent_transactions_table">
+        <% @transactions.each do |transaction| %>
+          <tr>
+            <td id="transaction_left">
+              <div id="transaction_name"><%= transaction.name %></div>
+              <div id="transaction_amount"><%= transaction.date.strftime("%b %e")%> | <%= number_to_currency(transaction.amount) %></div>
+            </td>
+            <td id="transaction_right"><%= number_to_currency(transaction.difference) %></td>
+
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- <div id="donations_graph" class="col-xs-12 col-md-8">Graph</div> -->
+<div id="chart-container" class="col-xs-12 col-md-7" style='margin-top: 1.18em; height: 90vh;'></div>
+
+<!-- style="width:100%; height:500px; position: absolute;" -->

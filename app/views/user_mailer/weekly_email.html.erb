@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>To login to the site, just follow this link: <%= @url %>.</p>
+    <h1>Thank you <%= @user.name %> for giving your SpareChange to <%=@charity%>!</h1>
+    <p>You donated <%= @user.transactions.current_week_total %> to <%=@charity%> this week.</p>
+    <p>Here is a list of those transactions:</p>
+    <table>
+      <tr>
+        <td>Business:</td>
+        <td>Date:</td>
+        <td>Amount:</td>
+        <td>Rounded Amount:</td>
+        <td>Difference:</td>
+      </tr>
+      <% @user.transactions.each do |transaction| %>
+        <tr>
+          <td><%= transaction.name %></td>
+          <td><%= transaction.date %></td>
+          <td><%= transaction.amount %></td>
+          <td><%= transaction.rounded_amount %></td>
+          <td><%= transaction.difference %></td>
+        </tr>
+      <% end %>
+    </table>
+  </body>
+</html>

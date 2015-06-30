@@ -1,0 +1,13 @@
+<h2>User Dashboard</h2>
+
+<p>Name: <%= current_user.name if current_user.name %></p>
+<p>Email: <%= current_user.email if current_user.email %></p>
+
+<h3>Total contributions:</h3>
+  <p><%= @total_contributions %></p>
+<h3>Total contributions this month:</h3>
+  <p><%= @current_month_total %></p>
+<h3>Total contributions last month:</h3>
+  <p><%= @previous_month_total %></h3>
+
+

@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150619191943) do
+ActiveRecord::Schema.define(version: 20150621232535) do
+
+  create_table "banks", force: :cascade do |t|
+    t.string   "bank_name"
+    t.string   "account_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "charges", force: :cascade do |t|
     t.integer  "user_id"
@@ -24,8 +31,9 @@ ActiveRecord::Schema.define(version: 20150619191943) do
 
   create_table "charities", force: :cascade do |t|
     t.string   "name"
-    t.string   "paypal_id"
     t.text     "description"
+    t.string   "logo_url"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -46,6 +54,8 @@ ActiveRecord::Schema.define(version: 20150619191943) do
     t.string   "transaction_account"
     t.string   "transaction_id"
     t.decimal  "amount",              precision: 10, scale: 2
+    t.decimal  "rounded_amount",      precision: 10, scale: 2
+    t.decimal  "difference",          precision: 10, scale: 2
     t.date     "date"
     t.string   "name"
     t.boolean  "pending"
@@ -55,13 +65,27 @@ ActiveRecord::Schema.define(version: 20150619191943) do
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
-    t.string   "email"
-    t.string   "username"
-    t.string   "password_hash"
-    t.string   "account_type"
+    t.integer  "role"
     t.integer  "charity_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "bank_id"
+    t.string   "plaid_access_token"
+    t.string   "stripe_customer_id"
+    t.string   "stripe_subscription_id"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

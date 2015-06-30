@@ -1,0 +1,36 @@
+<main role="main">
+  <div class='authform'>
+    <div class="help-block">
+      We don't keep any of your card information, so to update, you'll have to start from scratch. If you'd like to delete Stripe's payment profile (which contains your card information), please press remove current card.
+    </div>
+    <form action="/stripe/update"  method="post">
+      <div class="form-group">
+        <label>Donation frequency</label>
+        <select class="form-control" name="frequency">
+          <option value='1'>Weekly</option>
+          <option value='2'>Monthly</option>
+          <option value='3'>Quarterly</option>
+          <option value='4'>Yearly</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Card number</label>
+        <input class="form-control" type="text" name="card[number]">
+      </div>
+      <div class="form-group">
+        <label>Exp. month</label>
+        <input class="form-control" type="number" name="card[exp_month]" min="1" max="12">
+      </div>
+      <div class="form-group">
+        <label>Exp. year</label>
+        <input class="form-control" type="number" name="card[exp_year]" min="<%= Time.now.year %>" max="<%= Time.now.year + 30 %>">
+      </div>
+      <div class="form-group">
+        <label>CVC</label>
+        <input class="form-control" type="text" name="card[cvc]">
+      </div>
+      <input type="submit" value="Sign up" class="button right">
+      <a href="<%= stripe_delete_path %>"><input type="button" value="Remove current card" class ="button left"/></a>
+    </form>
+  </div>
+</main>

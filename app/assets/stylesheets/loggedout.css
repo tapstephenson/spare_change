@@ -1,0 +1,49 @@
+.hero {
+  height: 100vh;
+  background-image: url("sf_background.jpeg");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: 120%;
+}
+
+.welcome-text {
+  font-size: 2.5em;
+  color: white;
+  text-align: center;
+  font-family: Roboto;
+
+}
+
+.welcome-text-desc {
+  font-size: 1.3em;
+  text-align: center;
+  margin: auto;
+  width: 40%;
+  color: white;
+}
+
+
+.get-started {
+  margin-top: 18%;
+  padding-top: 2em;
+  padding-bottom: 2.5em;
+  border-radius: .5em;
+  background-color:rgba(74,71,69,0.7);
+}
+
+.sign-up-button {
+  font-size: 1.5em;
+  width: 12em;
+  margin-top: 1em;
+  padding: .5em;
+  color: white;
+  background-color: #2996cc;
+  border-color: #2996cc;
+  border-radius: .2em;
+}
+
+
+
+
+
+

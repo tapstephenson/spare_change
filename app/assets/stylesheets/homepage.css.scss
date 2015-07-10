@@ -52,9 +52,6 @@ body{
   }
 }
 
-
-
-
 #last_two_months_container:hover{
     overflow-y: scroll;
 }
@@ -68,6 +65,7 @@ body{
     min-width: 90%;
     margin-left: auto;
     margin-right: auto;
+    overflow: scroll;
     tr{
       border-bottom: 1px solid black;
     }
@@ -98,5 +96,3 @@ body{
 #donations_graph{
   padding: 2%;
 }
-
-

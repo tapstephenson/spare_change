@@ -1,5 +1,5 @@
 
-### About Spare Change
+## About Spare Change
 
 Spare Change makes charity giving easy through seamless micro-donations.
 
@@ -11,7 +11,7 @@ Spare Change then tracks each user's daily transactions using Plaid and calculat
 
 At the end of the month each user is notified of their pending contribution and given the option to abort the transaction before we charge their bank account using Stripe and send the money to the charity of the user's choosing.
 
-## How to Run Spare Change Locally
+### How to Run Spare Change Locally
 
 1. Navigate to an appropriate directory on your machine
 

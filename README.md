@@ -16,20 +16,20 @@ At the end of the month each user is notified of their pending contribution and 
 1. Navigate to an appropriate directory on your machine
 
 2. Clone the repo in the command line
-- `git clone https://github.com/tapley/spare_change.git`
-- If forked to your repo use your clone url
+  *`git clone https://github.com/tapley/spare_change.git`
+  *If forked to your repo use your clone url
 
 3. Navigate to the spare_change directory
-- `cd spare_change`
+  *`cd spare_change`
 
 4. Install required project gems
-- `bundle install`
+  *`bundle install`
 
 5. Create database, migrate schema, seed database
-- `bin/rake db:create db:migrate db:seed`
+  *`bin/rake db:create db:migrate db:seed`
 
 6. Start rails server
-- `bin/rails s`
+  *`bin/rails s`
 
 7.
 
@@ -38,5 +38,5 @@ At the end of the month each user is notified of their pending contribution and 
 9.
 
 10. Sign in test account
-- Username `tapley`
-- Password `12345678`
+  *Username `tapley`
+  *Password `12345678`

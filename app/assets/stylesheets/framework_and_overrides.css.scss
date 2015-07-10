@@ -2,12 +2,26 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-main {
+html, body, main {
+  height: 100%;
+}
+
+body {
   background-repeat: repeat;
   background-image: image-url('connected.png');
   background-color: #ACE0BB; /* Old browsers */
+}
+
+header {
+  position: static;
+  z-index: 1000;
+}
+
+main {
   width: 100%;
-  padding-top: 51px; // accommodate the navbar
+  padding-top: 20px; // accommodate the navbar
+  padding-right: 3%;
+  padding-left: 3%;
   padding-bottom: 1%;
   display: inline-block;
 }
@@ -28,16 +42,13 @@ img {
   }
 // override for the 'Home' navigation link
 
+.navbar {
+  margin-bottom: 0;
+}
 
 .navbar-brand {
   font-size: inherit;
   }
-
-.navbar-absolute{
-  position: absolute;
-  width: 100%;
-  top: 0;
-}
 
 .logo {
   width: 7em;

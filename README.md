@@ -38,5 +38,5 @@ At the end of the month each user is notified of their pending contribution and 
 9.
 
 10. Sign in test account
-- Username: `tapley`
-- Password: `12345678`
+- Username `tapley`
+- Password `12345678`

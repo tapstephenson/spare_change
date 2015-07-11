@@ -28,15 +28,38 @@ At the end of the month each user is notified of their pending contribution and 
 5. Create database, migrate schema, seed database
   * `bin/rake db:create db:migrate db:seed`
 
-6. Start rails server
-  * `bin/rails s`
+### Start Servers
 
-7.
+1. Install Redis (a key/value store that maintains a job queue)
+  * `brew install redis`
 
-8.
+2. Install Foreman (runs severs)
+  * `gem install foreman`
 
-9.
+3. Open a new tab in terminal and run redis-cli monitor (debugging redis)
+  * `redis-cli monitor`
 
-10. Sign in test account
-  * Username `tapley`
+4. Run Foreman (starts severs)
+  * `foreman start`
+
+### Sign into test account
+
+1. Sign in test account
+  * Username `john.smith@gmail.com`
   * Password `12345678`
+
+### Sign in using Plaid & Stripe Test Credentials
+
+To sign in using test credentials which will call the Plaid and Stripe API's you must have access to the secret API keys which must be kept private. If you're interested in a live demo, please contact any of the project contributers listed below:
+
+* Joshua Croff
+  * `joshua.croff@gmail.com`
+
+* Tapley Stephenson
+  * `tapley.stephenson@gmail.com`
+
+* Teresa Martyny
+  * `teresamartyny@gmail.com`
+
+* Piara Sandhu
+  * `piarasandhu108@gmail.com`

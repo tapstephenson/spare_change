@@ -1,9 +1,13 @@
 .hero {
-  height: 100vh;
+  height: 100%;
   background-image: url("sf_background.jpeg");
   background-position: top;
   background-repeat: no-repeat;
-  background-size: 120%;
+  background-size: cover;
+  display: block;
+  position: relative;
+  padding-top: 250px;
+  z-index: 1;
 }
 
 .welcome-text {
@@ -11,7 +15,6 @@
   color: white;
   text-align: center;
   font-family: Roboto;
-
 }
 
 .welcome-text-desc {
@@ -22,9 +25,7 @@
   color: white;
 }
 
-
 .get-started {
-  margin-top: 18%;
   padding-top: 2em;
   padding-bottom: 2.5em;
   border-radius: .5em;
@@ -41,9 +42,3 @@
   border-color: #2996cc;
   border-radius: .2em;
 }
-
-
-
-
-
-

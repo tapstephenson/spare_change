@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
- belongs_to :bank
-enum role: [:user, :vip, :admin]
+  belongs_to :bank
+  belongs_to :charity
+  has_many :transactions
+  enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
   after_create :send_welcome_email
 
@@ -41,8 +43,6 @@ enum role: [:user, :vip, :admin]
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :transactions
-  has_many :charities
 
   private
 

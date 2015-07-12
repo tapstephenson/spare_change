@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   end
 
   def send_welcome_email
-    UserMailer.delay.welcome_email(self.id)
+    # UserMailer.delay.welcome_email(self.id) #comment out while testing
   end
 
   def total_contributions

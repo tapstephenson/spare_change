@@ -7,15 +7,18 @@
 }
 
 .welcome-text {
-  font-size: 3em;
+  font-size: 2.5em;
   color: white;
   text-align: center;
+  font-family: Roboto;
 
 }
 
 .welcome-text-desc {
+  font-size: 1.3em;
+  text-align: center;
   margin: auto;
-  width: 30%;
+  width: 40%;
   color: white;
 }
 

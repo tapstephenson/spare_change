@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
  belongs_to :bank
-
 enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
   after_create :send_welcome_email
@@ -24,7 +23,7 @@ enum role: [:user, :vip, :admin]
   end
 
   def total_contributions
-    self.transactions.sum(:difference)
+    self.transactions.where(["date > ?", self.created_at]).sum(:difference)
   end
 
   def current_month_total

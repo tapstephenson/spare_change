@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20150621232535) do
     t.string   "name"
     t.text     "description"
     t.string   "logo_url"
-    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

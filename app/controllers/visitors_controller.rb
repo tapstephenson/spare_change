@@ -1,5 +1,6 @@
 class VisitorsController < ApplicationController
   include UserConcerns
+  include SettingsConcerns
 
   def index
     if current_user

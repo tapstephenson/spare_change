@@ -1,9 +1,8 @@
 class SettingsController < ApplicationController
   include UserConcerns
+  include SettingsConcerns
 
   before_filter :authenticate_user!
-  # before_action :authorize_user, only: [:index]
-  
 
   def index
     render :index

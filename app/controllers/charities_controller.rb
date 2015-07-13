@@ -1,7 +1,7 @@
 class CharitiesController < ApplicationController
   include UserConcerns
   def update
-    current_user.update_attributes(charity_id: params[:id])
+    current_user.update_attributes(charity_id: params[:charity_id])
     redirect_to "/"
   end
 

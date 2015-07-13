@@ -9,7 +9,7 @@
       <li role="separator" class="divider"></li>
       <li><%= link_to 'Edit Charge', stripe_update_path %></li>
       <li role="separator" class="divider"></li>
-      <li><%= link_to 'Edit Charity', charities_index_path %></li>
+      <li><%= link_to 'Edit Charity', charities_users_path(current_user) %></li>
     </ul>
   </li>
   <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
@@ -18,7 +18,7 @@
   <li><%= link_to 'Sign up', new_user_registration_path %></li>
 <% end %>
 <% if user_signed_in? %>
-  <%# if current_user.admin? %>
-    <!-- <li><%#= link_to 'Users', users_path %></li> -->
-  <%# end %>
+  <% if current_user.admin? %>
+    <li><%= link_to 'Users', users_path %></li>
+  <% end %>
 <% end %>

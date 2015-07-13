@@ -4,7 +4,7 @@ class CreateCharities < ActiveRecord::Migration
       t.string      :name
       t.text        :description
       t.string      :logo_url
-      t.references  :user
+      # t.references  :user (user only has 1 charity)
 
       t.timestamps null: false
     end

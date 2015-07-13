@@ -18,7 +18,7 @@ Charity.create( name: "Habitat for Humanity",
                 logo_url: "http://www.habitatroaringfork.org/images/logo.jpg")
 Charity.create( name: "San Francisco Food Bank",
                 description: "Our mission is to end hunger in San Francisco and Marin. Farm-fresh fruits and vegetables… neighborhood pantries where people can choose their food… nutrition education classes... and much more.",
-                logo_url: "http://www.sfmfoodbank.org/sites/all/themes/sffb/images/sffb-logo.png")
+                logo_url: "http://citizenspace.us/wp-content/uploads/2011/11/sffb_apple.jpg")
 Charity.create( name: "Boys & Girls Club",
                 description: "We offer access to daily homework help, professional tutoring, support for college acceptance, and college scholarships; health and fitness, healthy eating and mental health services; free swim, learn-to-swim, and competitive swimming; nationally-recognized visual arts programs; community service opportunities; a traveling basketball program; character and leadership development programs; and much more.",
                 logo_url: "http://www.fremontuniverse.com/wp-content/uploads/HANDS.bmp")

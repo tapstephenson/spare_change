@@ -1,4 +1,3 @@
-
 ## About Spare Change
 
 Spare Change makes charity giving easy through seamless micro-donations.
@@ -45,7 +44,7 @@ At the end of the month each user is notified of their pending contribution and 
 ### Sign into test account
 
 1. Sign in test account
-  * Username `john.smith@gmail.com`
+  * Username `sparechangegiving@gmail.com`
   * Password `12345678`
 
 ### Sign in using Plaid & Stripe Test Credentials
@@ -58,8 +57,15 @@ To sign in using test credentials which will call the Plaid and Stripe API's you
 * Tapley Stephenson
   * `tapley.stephenson@gmail.com`
 
-* Teresa Martyny
-  * `teresamartyny@gmail.com`
+* [Teresa Martyny LinkedIn](https://www.linkedin.com/in/teresamartyny)
 
 * Piara Sandhu
   * `piarasandhu108@gmail.com`
+
+Main Page:
+
+![Screen shot of main page.](home.png)
+
+User Dashboard:
+
+![Screen shot of an admin user dashboard.](dashboard.png)

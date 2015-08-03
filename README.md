@@ -44,7 +44,7 @@ At the end of the month each user is notified of their pending contribution and 
 ### Sign into test account
 
 1. Sign in test account
-  * Username `john.smith@gmail.com`
+  * Username `sparechangegiving@gmail.com`
   * Password `12345678`
 
 ### Sign in using Plaid & Stripe Test Credentials

@@ -2,11 +2,9 @@ class PlaidController < ApplicationController
 
   def new
       @banks = []
-
       Bank.all.each do |bank|
         @banks << [bank.bank_name, bank.account_type]
       end
-
       render :new
   end
 
@@ -31,6 +29,27 @@ class PlaidController < ApplicationController
     bank = Bank.find_by(account_type: params[:account_type])
     current_user.update_attributes(bank_id: bank.id)
     # current_user.save
+
+    # process for retrieving transactions via Plaid
+    user_transactions = HTTParty.post("https://tartan.plaid.com/connect/get",
+      body:{
+        client_id: ENV['PLAID_CLIENT_ID'],
+        secret: ENV['PLAID_SECRET'],
+        access_token: current_user.plaid_access_token
+      }
+    )
+    user_transactions['transactions'].each do |transaction|
+      Transaction.create(
+        user_id: current_user.id,
+        charity_id: current_user.charity_id,
+        transaction_account: transaction["amount"],
+        transaction_id: transaction["_id"] ,
+        amount: transaction["amount"],
+        date: transaction["date"] ,
+        name: transaction["name"],
+        pending: transaction["pending"]
+      )
+    end
 
     redirect_to '/'
   end

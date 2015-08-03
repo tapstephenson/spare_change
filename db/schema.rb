@@ -31,8 +31,9 @@ ActiveRecord::Schema.define(version: 20150621232535) do
 
   create_table "charities", force: :cascade do |t|
     t.string   "name"
-    t.string   "paypal_id"
     t.text     "description"
+    t.string   "logo_url"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -53,6 +54,8 @@ ActiveRecord::Schema.define(version: 20150621232535) do
     t.string   "transaction_account"
     t.string   "transaction_id"
     t.decimal  "amount",              precision: 10, scale: 2
+    t.decimal  "rounded_amount",      precision: 10, scale: 2
+    t.decimal  "difference",          precision: 10, scale: 2
     t.date     "date"
     t.string   "name"
     t.boolean  "pending"

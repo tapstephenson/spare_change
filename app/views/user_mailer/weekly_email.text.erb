@@ -1,0 +1,16 @@
+Thank you <%= @user.name %> for giving your SpareChange to <%=@charity%>!
+===================================================
+To login to the site, just follow this link: <%= @url %>.
+
+You donated <%= @user.transactions.current_week_total %> to <%=@charity%> this week!
+
+Here is a list of those transactions:
+
+<% @user.transactions.each do |transaction| %>
+  Business: <%= transaction.name %>
+  Date: <%= transaction.date %>
+  Amount: <%= transaction.amount %>
+  Rounded Amount: <%= transaction.rounded_amount %>
+  Difference: <%= transaction.difference %>
+  =============
+<% end %>

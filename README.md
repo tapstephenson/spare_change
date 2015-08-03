@@ -57,8 +57,7 @@ To sign in using test credentials which will call the Plaid and Stripe API's you
 * Tapley Stephenson
   * `tapley.stephenson@gmail.com`
 
-* Teresa Martyny
-  * `teresamartyny@gmail.com`
+* [Teresa Martyny LinkedIn](https://www.linkedin.com/in/teresamartyny)
 
 * Piara Sandhu
   * `piarasandhu108@gmail.com`

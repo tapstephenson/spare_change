@@ -1,11 +1,13 @@
+<!-- <div class='charities-list col-md-12'> -->
 <div class='authform'>
   <h3>Please Select Your Charity</h3>
   <%= form_for current_user, :url => charities_update_path(current_user), method: :patch do |f| %>
     <% @charities.all.each do |charity| %>
       <%= radio_button_tag("id", charity.id, (current_user.charity_id == charity.id)) %>
-      <%= image_tag(charity.logo_url) %>
+      <%= image_tag charity.logo_url, :class => "logo" %>
       <%= label_tag(:charity, charity.name + ": " + charity.description) %>
     <% end %>
     <%= f.submit 'Submit', :class => 'button right' %>
   <% end %>
 </div>
+<!-- </div> -->

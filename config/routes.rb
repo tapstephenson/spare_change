@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'plaid/update' => 'plaid#edit'
   patch 'plaid/update' => 'plaid#update'
   get 'plaid/delete' => 'plaid#delete'
+  get 'plaid/donations_graph' => 'plaid#donations_graph'
 
   get 'stripe/new' => 'stripe#new'
   post 'stripe/create' => 'stripe#create'
@@ -31,8 +32,9 @@ Rails.application.routes.draw do
   get '/settings/index' => 'settings#index'
   get '/settings/unfinished_signup' => 'settings#unfinished_signup'
 
+
   patch '/charities/update' => 'charities#update'
-  get '/charities/index' => 'charities#index' 
+  get '/charities/index' => 'charities#index'
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

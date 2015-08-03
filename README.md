@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-# spare_change
-Automated microdonations app
-
-Main Page:
-
-![Screen shot of main page.](home.png)
-
-User Dashboard:
-
-![Screen shot of an admin user dashboard.](dashboard.png)
-=======
-
 ## About Spare Change
 
 Spare Change makes charity giving easy through seamless micro-donations.
@@ -75,4 +62,11 @@ To sign in using test credentials which will call the Plaid and Stripe API's you
 
 * Piara Sandhu
   * `piarasandhu108@gmail.com`
->>>>>>> 3988ddcda66e065830fb01008fbdc016114c2432
+
+Main Page:
+
+![Screen shot of main page.](home.png)
+
+User Dashboard:
+
+![Screen shot of an admin user dashboard.](dashboard.png)

@@ -32,7 +32,7 @@ $.ajax({
       marginBottom: 20,
 
       // Sets the angle curves
-      borderRadius: 0,
+      borderRadius: 5,
 
       // Sets the font
       // style: {

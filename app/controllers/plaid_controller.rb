@@ -91,7 +91,7 @@ class PlaidController < ApplicationController
       daily_donation: []
     }
 
-    ordered_transactions = current_user.transactions.order(date: :asc)
+    ordered_transactions = current_user.transactions.where(["date > ?", current_user.created_at]).order(date: :asc)
     cumulative_donation = 0
     daily_donation = 0
     first_transaction_of_day = ordered_transactions.first
@@ -118,7 +118,7 @@ class PlaidController < ApplicationController
     # respond_to do |format|
     #   format.js { render json: @response }
     # end
-
+    p "Reponse"
     p @response
     render json: {monthAmount: @response}
 

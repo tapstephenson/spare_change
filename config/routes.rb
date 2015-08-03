@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  # lines 3 & 4 are for paypal if we use it.
-  # get "/auth/paypal/callback", to: "sessions#create"
-  # resource :session
 
-  # devise_for and resources are for devise
   devise_for :users
   resources :users
+  
+  # CHARITIES
+  patch '/charities/:id/users/:id/update' => 'charities#update', as: :update_charities_users
+  get '/charities/:id/users/:id/index' => 'charities#index', as: :charities_users
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -33,8 +34,7 @@ Rails.application.routes.draw do
   get '/settings/unfinished_signup' => 'settings#unfinished_signup'
 
 
-  patch '/charities/update' => 'charities#update'
-  get '/charities/index' => 'charities#index'
+  
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

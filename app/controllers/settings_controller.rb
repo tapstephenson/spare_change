@@ -1,9 +1,8 @@
 class SettingsController < ApplicationController
   include UserConcerns
+  include SettingsConcerns
 
   before_filter :authenticate_user!
-  # before_action :authorize_user, only: [:index]
-  
 
   def index
     render :index
@@ -16,7 +15,7 @@ class SettingsController < ApplicationController
       redirect_to stripe_new_path
     elsif !charity_complete
       all_charities
-      redirect_to charities_index_path
+      redirect_to charities_users_path
     end
   end
 
